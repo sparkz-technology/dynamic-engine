@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: dynamic-engine
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dynamic_engine_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+
+  output:
+    ansi:
+      enabled: ALWAYS
+
+logging:
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr([%15.15t]){cyan} %clr(:){faint} %m%n"
+
+springdoc:
+  swagger-ui:
+    path: /docs
+
+jwt:
+  secret: very_secret_change_me_to_env_value_please
+  expiration-ms: 3600000 # 1 hour
+  refresh-expiration-ms: 86400000 # 24 hours

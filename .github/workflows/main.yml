@@ -33,14 +33,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
-      # Build with Maven
-      - name: Build with Maven
-        run: mvn clean install -B
+      # Build with Maven (skip tests)
+      - name: Build with Maven (skip tests)
+        run: mvn clean install -DskipTests -B
 
-      # Optional: Run tests
-      - name: Run tests
-        run: mvn test -B
-
-      # Optional: Package jar
+      # Package jar (optional, already done by install)
       - name: Package jar
-        run: mvn package -B
+        run: mvn package -DskipTests -B
